@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="icon" href="search.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .cf1 {
+            background-image: url("606500.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100lvh;
+
+
+        }
+
+        .c9 input {
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-radius: 15px;
+            color: black;
+            outline: none;
+            padding-left: 20px;
+            padding-right: 30px;
+        }
+
+        .c9 input::placeholder {
+            color: #000;
+            font-weight: 500;
+        }
+
+        .c9 input:hover {
+            border: 2px solid palevioletred;
+
+        }
+
+        .c3 button {
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-radius: 15px;
+            color: rgb(255, 255, 255);
+            background-color: rgb(8, 178, 245);
+            outline: none;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .c3 button:hover {
+            background-color: #fff;
+            color: rgb(8, 178, 245);
+        }
+
+        .r {
+
+            margin: auto;
+            margin-top: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid cf1">
+        <div class="container">
+            <div class="row">
+                <p id="user"></p>
+            </div>
+            <div class="row">
+                <p id="me"></p>
+            </div>
+            <div class="row r">
+                <div class="col-9 c9">
+                    <input type="search" placeholder="search here" id="inpu">
+                </div>
+                <div class="col-3 c3">
+                    <button type="submit" onclick="fun()">go-></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    function fun() {
+        var user = document.getElementById("inpu").value;
+        let speech = new SpeechSynthesisUtterance();
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        let recognition = new window.SpeechRecognition();
+        recognition.interimResults = true;
+        speech.lang = 'en-US';
+        speech.pitch = 1;
+        speech.rate = 1;
+        speech.volume = 2;
+
+        recognition.start();
+
+        recognition.onresult = function (event) {
+            var user = event.results[0][0].transcript.toLowerCase(); 
+            if (user !== "") {
+                if (user === "hi" || user === "hello" || user === "ram ram" || user === "walk up" || user === "hello") {
+                    speech.text = "Hello, sir. How may I assist you?";
+                    window.speechSynthesis.speak(speech);
+                }
+                if (user === "google") {
+                    speech.text = "i open a google";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://www.google.com/", "_blank");
+                }
+                if (user === "youtube") {
+                    speech.text = "i open a youtube";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://www.youtube.com/", "_blank");
+                }
+                if (user === "whatsapp") {
+                    speech.text = "i open a whatsapp";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://web.whatsapp.com/", "_blank");
+                }
+                if (user === "how are you") {
+                    speech.text = "i am fine and i hope that you also fine";
+                    window.speechSynthesis.speak(speech);
+                }
+                if (user === "who are you") {
+                    speech.text = "i am jack and i created by kunal bro";
+                    window.speechSynthesis.speak(speech);
+                }
+                if (user === "chat gpt") {
+                    speech.text = "i open a chat gpt this is ai ";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://chat.openai.com/", "_blank");
+                }
+                if (user === "music" || user === "play a music") {
+                    speech.text = "i play a music";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://music.youtube.com/watch?v=gxTRx4uurxs&list=RDAMVMGvdKeZO8IzM", "_blank");
+                }
+                if (user === "time") {
+                    speech.text = "sorry  but i dont know";
+                    window.speechSynthesis.speak(speech);
+                }
+                if (user === "google map" || user === "map") {
+                    speech.text = " ok ! open a map";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://www.google.com/maps/place/Japan/@35.3805226,139.6399087,3261m/data=!3m1!1e3!4m6!3m5!1s0x34674e0fd77f192f:0xf54275d47c665244!8m2!3d36.204824!4d138.252924!16zL20vMDNfM2Q!5m1!1e4?entry=ttu", "_blank");
+
+                }
+                if (user === "instagram" || user === "insta") {
+                    speech.text = " ok ! open a instagram";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://www.instagram.com/", "_blank");
+
+                }
+                if (user === "download movies") {
+                    speech.text = " ok let enjoy";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://hdhub4u.rsvp/", "_blank");
+                }
+                if (user === "today news" || user === "news") {
+                    speech.text = " ok let news time";
+                    window.speechSynthesis.speak(speech);
+                    window.open("")
+                }
+            }
+            
+            };
+
+            if (user !== "") {
+                if (user === "hi" || user === "hello" || user === "ram ram" || user === "walk up") {
+                    speech.text = "Hello, sir. How may I assist you?";
+                    window.speechSynthesis.speak(speech);
+                }
+                if (user === "google") {
+                    speech.text = "i open a google";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://www.google.com/", "_blank");
+                }
+                if (user === "youtube") {
+                    speech.text = "i open a youtube";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://www.youtube.com/", "_blank");
+                }
+                if (user === "whatsapp") {
+                    speech.text = "i open a whatsapp";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://web.whatsapp.com/", "_blank");
+                }
+                if (user === "how are you") {
+                    speech.text = "i am fine and i hope that you also fine";
+                    window.speechSynthesis.speak(speech);
+                }
+                if (user === "who are you") {
+                    speech.text = "i am jack and i created by kunal bro";
+                    window.speechSynthesis.speak(speech);
+                }
+                if (user === "chat gpt") {
+                    speech.text = "i open a chat gpt this is ai ";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://chat.openai.com/", "_blank");
+                }
+                if (user === "music" || user === "play a music") {
+                    speech.text = "i play a music";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://music.youtube.com/watch?v=gxTRx4uurxs&list=RDAMVMGvdKeZO8IzM", "_blank");
+                }
+                if (user === "time") {
+                    speech.text = "sorry  but i dont know";
+                    window.speechSynthesis.speak(speech);
+                }
+                if (user === "google map" || user === "map") {
+                    speech.text = " ok ! open a map";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://www.google.com/maps/place/Japan/@35.3805226,139.6399087,3261m/data=!3m1!1e3!4m6!3m5!1s0x34674e0fd77f192f:0xf54275d47c665244!8m2!3d36.204824!4d138.252924!16zL20vMDNfM2Q!5m1!1e4?entry=ttu", "_blank");
+
+                }
+                if (user === "instagram" || user === "insta") {
+                    speech.text = " ok ! open a instagram";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://www.instagram.com/", "_blank");
+
+                }
+                if (user === "download movies") {
+                    speech.text = " ok let enjoy";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://hdhub4u.rsvp/", "_blank");
+                }
+                if (user === "today news" || user === "news") {
+                    speech.text = " ok let news time";
+                    window.speechSynthesis.speak(speech);
+                    window.open("https://www.google.com/search?q=news&sca_esv=dbec97f3c192e658&sxsrf=ACQVn0_CrBkI6hdO_ljgM3mHAoeYN00x9g%3A1713783930383&ei=ekQmZpfyFpaa4-EPls6I0AI&ved=0ahUKEwiXl5HT1tWFAxUWzTgGHRYnAioQ4dUDCBE&uact=5&oq=news&gs_lp=Egxnd3Mtd2l6LXNlcnAiBG5ld3MyExAAGIAEGLEDGEMYgwEYyQMYigUyEBAAGIAEGLEDGEMYgwEYigUyCxAAGIAEGJIDGIoFMgsQABiABBiSAxiKBTIQEAAYgAQYsQMYgwEYFBiHAjIQEC4YgAQYsQMYQxiDARiKBTINEAAYgAQYsQMYQxiKBTINEAAYgAQYsQMYQxiKBTIIEAAYgAQYsQMyEBAAGIAEGLEDGEMYgwEYigVIpgZQjAFYjAFwAXgBkAEAmAG2AaABtgGqAQMwLjG4AQPIAQD4AQGYAgKgAtoBwgIHECMYsAMYJ8ICChAAGLADGNYEGEfCAg0QABiABBiwAxhDGIoFwgIOEAAYsAMY5AIY1gTYAQHCAhkQLhiABBiwAxjRAxhDGMcBGMgDGIoF2AECwgITEC4YgAQYsAMYQxjIAxiKBdgBApgDAIgGAZAGE7oGBggBEAEYCboGBggCEAEYCJIHAzEuMaAH9gc&sclient=gws-wiz-serp", "_blank");
+                }
+
+            }
+
+        }
+
+
+</script>
+
+</html>
